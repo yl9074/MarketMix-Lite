@@ -17,3 +17,7 @@ def pathway_detail(request, pathway_id):
         'videos': videos,
     }
     return render(request, 'courses/pathway_detail.html', context)
+
+def subject_catalog(request):
+    subjects = Subject.objects.all()
+    return render(request, 'courses/subject_catalog.html', {'subjects': subjects})

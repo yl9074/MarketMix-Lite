@@ -8,4 +8,6 @@ urlpatterns = [
     
     # The expected parameter is now pathway_id, pointing to the pathway_detail view
     path('<int:pathway_id>/', views.pathway_detail, name='pathway_detail'),
+
+    path('catalog/', views.subject_catalog, name='catalog'),
 ]

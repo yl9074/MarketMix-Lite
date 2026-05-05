@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.dashboard-hrefs {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-left: 400px;
+}
+
+.dashboard-hrefs a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.dashboard-hrefs a:hover {
+    background-color: #f0f0f0;
+    padding: 20px 0px;
+}
+
+.profile {
+    width: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+

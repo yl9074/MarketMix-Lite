@@ -33,7 +33,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)  # Log the user in after registration
-            return redirect('pathway_list')  # Redirect to the pathway list after successful registration
+            return redirect('dashboard')  # redirect to the dashboard after successful registration
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})

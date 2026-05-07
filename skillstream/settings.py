@@ -124,6 +124,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Authentication Redirects
-LOGIN_REDIRECT_URL = 'catalog'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'login'
 LOGIN_URL = 'login'

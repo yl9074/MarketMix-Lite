@@ -10,14 +10,15 @@
     <div class="sign-up-box">
         <h2>Log In</h2>
 
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <div class="input-group">
                 <img src="{% static 'images/User.png' %}" alt="User Icon" class="user-icon">
-                <input type="text" placeholder="Username" required>
+                {{ form.username }}
             </div>
             <div class="input-group">
                 <img src="{% static 'images/Lock.png' %}" alt="Lock Icon" class="lock-icon">
-                <input type="password" id="password" placeholder="Password" required>
+                {{ form.password }}
             </div>
             <div id="loginButton">
                 <button type="submit">LOG IN</button>

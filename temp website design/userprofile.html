@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-    <link rel="stylesheet" href="styleprofile.css">
+    <link rel="stylesheet" href="tempstyleprofile.css">
 </head>
 <body>
 
     <div class="container">
     
         <header class="header">
-            <button class="back-button">Back</button>
+            <a href="dashboard.html"><button class="back-button">Back</button></a>
             <h1>Profile</h1>
         </header>
 
         <div class="card profile-card">
             <div class="profile-header">
                 <div class="avatar">
-                    <img src="Profile.png" alt="Profile Avatar">
+                    <img src="Profile.png" id="profile-image" alt="Profile Avatar">
                 </div>
-                <button class="change-profile-button">Change profile</button>
+                <button class="change-profile-button" id="upload-button">Change profile</button>
+                <input type="file" id="file-input" accept="image/*" style="display: none;">
             </div>
             <div class="profile-info">
                 <p class="username">(Username)</p>
@@ -60,6 +61,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+    const uploadBtn = document.getElementById('upload-button');
+    const fileInput = document.getElementById('file-input');
+    const profileImg = document.getElementById('profile-image');
+
+    uploadBtn.addEventListener('click', function() {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            const objectURL = URL.createObjectURL(file);
+            
+            profileImg.src = objectURL;
+        }
+    });
+    </script>
 
 </body>
 </html>

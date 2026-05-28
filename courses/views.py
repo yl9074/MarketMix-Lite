@@ -10,13 +10,18 @@ def pathway_list(request):
     pathways = Pathway.objects.all()
     return render(request, 'courses/pathway_list.html', {'pathways': pathways})
 
-# 2. Detail Page: Display all video lessons within a specific pathway
+# 2. Detail Page: Display all video lessons within a specific pathway (WITH TRACKER AND DEBUG)
 @login_required
 def pathway_detail(request, pathway_id):
     pathway = get_object_or_404(Pathway, id=pathway_id)
-    # Retrieve all videos under this pathway, ordered by their sequence number
     videos = pathway.videos.all().order_by('sequence_order') 
     
+    for video in videos:
+        UserProgress.objects.get_or_create(
+            user=request.user,
+            video=video
+        )
+
     context = {
         'pathway': pathway,
         'videos': videos,
@@ -90,7 +95,13 @@ def search_courses(request):
 
 @login_required
 def user_profile(request):
-    return render(request, 'profile.html')
+    progress_records = UserProgress.objects.filter(user=request.user)
+    
+    context = {
+        'progress_list': progress_records
+    }
+    
+    return render(request, 'profile.html', context)
 
 @login_required
 def feedback(request):
@@ -100,3 +111,4 @@ def feedback(request):
 def courses(request):
     pathways = Pathway.objects.all()
     return render(request, 'courses.html', {'pathways': pathways})
+

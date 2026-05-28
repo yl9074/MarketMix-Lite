@@ -91,7 +91,7 @@ def search_courses(request):
         'query': query
     }
     
-    return render(request, 'courses/search_results.html', context)
+    return render(request, 'search_results.html', context)
 
 @login_required
 def user_profile(request):
